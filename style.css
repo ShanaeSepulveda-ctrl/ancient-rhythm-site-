@@ -1,0 +1,13 @@
+body { font-family: Georgia, serif; background:#171233; color:#f5ecd7;
+  margin:0; padding:24px; text-align:center; }
+h1 { color:#e8b64c; }
+section { background:#221a47; border:1px solid #e8b64c55; border-radius:12px;
+  padding:20px; margin:20px auto; max-width:560px; }
+.buy { display:inline-block; background:#e8b64c; color:#171233; padding:12px 24px;
+  border-radius:8px; text-decoration:none; font-weight:bold; }
+#chatLog { text-align:left; min-height:80px; margin-bottom:10px; }
+#chatLog p { margin:6px 0; }
+input { padding:10px; width:65%; border-radius:8px; border:none; }
+button { padding:10px 16px; border-radius:8px; border:none;
+  background:#e8b64c; color:#171233; font-weight:bold; cursor:pointer; }
+.small { font-size:0.85em; opacity:0.8; }

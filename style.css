@@ -2,43 +2,66 @@
 body {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 20px; color: #f7efdb; margin: 0; padding: 32px 18px 48px;
-  text-align: center; min-height: 100vh;
+  text-align: center; min-height: 100vh; position: relative;
   background:
-    radial-gradient(2px 2px at 20% 30%, #fff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 70% 20%, #ffe9a8 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 85% 55%, #fff 50%, transparent 51%),
-    radial-gradient(2px 2px at 40% 70%, #d9c8ff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 55% 85%, #fff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 10% 80%, #ffe9a8 50%, transparent 51%),
-    radial-gradient(900px 500px at 50% -10%, #3b2a7a 0%, transparent 60%),
-    linear-gradient(180deg, #0d0a26 0%, #1b1440 55%, #241a52 100%);
-  background-color: #0d0a26;
+    radial-gradient(1000px 550px at 50% -10%, #46338c 0%, transparent 60%),
+    radial-gradient(700px 400px at 85% 110%, #5b2a6e 0%, transparent 55%),
+    linear-gradient(180deg, #0a0820 0%, #1b1440 55%, #2a1c5e 100%);
+  background-color: #0a0820; overflow-x: hidden;
 }
+/* Twinkling starfield */
+body::before {
+  content: ""; position: fixed; top: 8px; left: 8px; width: 2px; height: 2px;
+  border-radius: 50%; background: transparent; z-index: 0; pointer-events: none;
+  box-shadow:
+    12vw 6vh #fff, 28vw 14vh #ffe9a8, 44vw 4vh #fff, 63vw 10vh #d9c8ff,
+    81vw 7vh #fff, 92vw 16vh #ffe9a8, 6vw 26vh #d9c8ff, 22vw 34vh #fff,
+    38vw 22vh #ffe9a8, 57vw 30vh #fff, 74vw 26vh #fff, 89vw 38vh #d9c8ff,
+    15vw 48vh #fff, 33vw 55vh #ffe9a8, 51vw 44vh #fff, 68vw 58vh #fff,
+    84vw 50vh #ffe9a8, 4vw 66vh #fff, 25vw 72vh #d9c8ff, 47vw 66vh #fff,
+    60vw 78vh #ffe9a8, 78vw 70vh #fff, 95vw 62vh #fff, 10vw 86vh #ffe9a8,
+    36vw 90vh #fff, 55vw 84vh #d9c8ff, 71vw 92vh #fff, 88vw 84vh #ffe9a8,
+    30vw 8vh #fff, 50vw 16vh #fff, 3vw 42vh #ffe9a8, 97vw 28vh #fff;
+  animation: twinkle 2.8s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from { opacity: .45; } to { opacity: 1; } }
+header, section, footer { position: relative; z-index: 1; }
+/* The glowing moon */
+header::before {
+  content: ""; display: block; width: 104px; height: 104px; margin: 6px auto 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, #fffbe8 0%, #fdf0bc 38%, #f6d47c 62%, #d9a83f 100%);
+  box-shadow: 0 0 44px 14px rgba(246,212,124,.45), 0 0 120px 40px rgba(246,212,124,.18);
+  animation: floaty 7s ease-in-out infinite;
+}
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 h1, h2 { font-family: "Cinzel", serif; letter-spacing: 2px; }
 h1 {
-  font-size: 2.4em; margin-bottom: 4px;
+  font-size: 2.4em; margin: 0 0 4px;
   background: linear-gradient(90deg, #b98a2f, #f6d47c, #fff0b8, #f6d47c, #b98a2f);
   background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
   color: transparent; animation: shimmer 6s linear infinite;
 }
 @keyframes shimmer { to { background-position: 200% center; } }
-header p { font-style: italic; opacity: .9; margin-top: 0; }
+header p { font-style: italic; opacity: .92; margin-top: 0; }
 section {
-  background: rgba(34, 26, 71, .72); border: 1px solid rgba(232,182,76,.45);
-  border-radius: 16px; padding: 26px 22px; margin: 24px auto; max-width: 580px;
-  box-shadow: 0 0 32px rgba(120, 90, 255, .18), inset 0 0 24px rgba(232,182,76,.05);
-  backdrop-filter: blur(3px);
+  background: rgba(30, 22, 64, .78); border: 1px solid rgba(232,182,76,.5);
+  outline: 1px solid rgba(232,182,76,.18); outline-offset: 5px;
+  border-radius: 16px; padding: 26px 22px; margin: 26px auto; max-width: 580px;
+  box-shadow: 0 0 36px rgba(120, 90, 255, .22), inset 0 0 26px rgba(232,182,76,.06);
 }
-#today { border-color: rgba(246,212,124,.8); box-shadow: 0 0 44px rgba(246,212,124,.22); }
+section h2::after { content: "✦ ✦ ✦"; display: block; font-size: .5em;
+  color: #e8b64c; letter-spacing: 6px; margin-top: 6px; }
+#today { border-color: rgba(246,212,124,.85); box-shadow: 0 0 48px rgba(246,212,124,.28); }
 #moonName { font-family: "Cinzel", serif; font-size: 1.35em; color: #f6d47c; }
-#moonPrompt { font-style: italic; font-size: 1.1em; }
+#moonPrompt { font-style: italic; font-size: 1.12em; }
 .buy {
   display: inline-block; background: linear-gradient(180deg, #f6d47c, #d9a83f);
   color: #241a05; padding: 13px 28px; border-radius: 999px; text-decoration: none;
   font-family: "Cinzel", serif; font-weight: 700; letter-spacing: 1px;
-  box-shadow: 0 0 22px rgba(246,212,124,.45);
+  box-shadow: 0 0 24px rgba(246,212,124,.5);
 }
-.buy:hover { box-shadow: 0 0 34px rgba(246,212,124,.75); }
+.buy:hover { box-shadow: 0 0 38px rgba(246,212,124,.8); }
 #chatLog { text-align: left; min-height: 90px; margin-bottom: 12px; }
 #chatLog p { margin: 7px 0; line-height: 1.35; }
 #chatLog b { color: #f6d47c; font-family: "Cinzel", serif; font-size: .82em; letter-spacing: 1px; }

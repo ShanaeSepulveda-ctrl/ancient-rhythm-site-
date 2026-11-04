@@ -535,6 +535,26 @@ button { cursor: pointer; }
 
 .altar-button.is-active { color: #fff3c4; }
 
+.boundaries-line {
+  max-width: 680px;
+  margin: 12px auto 0;
+  text-align: center;
+  font-size: 0.82em;
+  line-height: 1.45;
+  color: rgba(255, 248, 239, 0.72);
+}
+
+.inline-link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
 .guide-drawer {
   position: fixed;
   z-index: 20;

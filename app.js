@@ -74,8 +74,8 @@ const MOONS = [
     affirmation: "I can carry warmth without carrying everything."
   },
   {
-    name: "Hunter Moon",
-    essence: "The Hunter Moon is about instinct and real nourishment. It is not a call to become predatory; it is a call to track honestly. As the year cools, this moon asks what you are truly hungry for and whether your daily pursuits can actually feed it.",
+    name: "Provision Moon",
+    essence: "The Provision Moon is about instinct and real nourishment. It is a call to track honestly: as the year cools, this moon asks what you are truly hungry for and whether your daily pursuits can actually feed it.",
     light: "It brings focus, self-trust, preparation, and the courage to pursue what is nourishing rather than merely available.",
     shadow: "Its shadow is scarcity, comparison, restless chasing, or pursuing substitutes while avoiding the deeper hunger beneath them.",
     prompt: "What am I truly hungry for beneath the substitutes I keep chasing?",
@@ -104,8 +104,8 @@ const MOONS = [
     affirmation: "The dark is not empty; it is where I am being remade."
   },
   {
-    name: "Wolf Moon",
-    essence: "The Wolf Moon speaks of voice, kinship, and surviving winter through connection. A howl is both location and invitation: I am here. Who else is here? It asks where you have been enduring silently when belonging could help carry the season.",
+    name: "Kinship Moon",
+    essence: "The Kinship Moon speaks of voice, kinship, and surviving winter through connection. It asks where you have been enduring silently when belonging could help carry the season, and who your people truly are when the year is at its coldest.",
     light: "It brings loyalty, support, honest communication, and the relief of being known.",
     shadow: "Its shadow is swallowing your needs to preserve peace, isolating until loneliness feels like identity, or allowing belonging to demand sameness.",
     prompt: "Where do I need to call for support instead of enduring alone?",
@@ -355,6 +355,22 @@ function render() {
   if (activeView === "card") renderCard();
   if (activeView === "calendar") renderCalendar();
   if (activeView === "journal") renderJournal();
+  if (activeView === "about") renderAbout();
+}
+
+function renderAbout() {
+  setOracle({
+    kicker: "About this calendar",
+    title: "Sources & Boundaries",
+    dates: "Please read — this matters to us",
+    body: `
+      <p><strong>Ancient Rhythm is a modern framework</strong> created by Shanae Sepulveda: thirteen cycles of 28 days, anchored to the Spring Equinox and shaped by the seasons, gardens, and land of Colorado. It is a personal creation, not an inherited tradition.</p>
+      <p>It is <strong>not affiliated with, endorsed by, or drawn from any Indigenous nation</strong>, and it does not teach Indigenous ceremonies, names, or teachings, or claim an ancient lineage. The moon names here are our own seasonal names, drawn from observing this land and garden.</p>
+      <p>The practices offered — reflection, journaling, breathing, and noticing the living world — are personal practices for your own use. They are not ceremony, and they are not a substitute for medical, mental-health, or other professional care.</p>
+      <p class="whisper">If you are seeking Indigenous teachings, we encourage you to learn directly from Indigenous teachers and creators, and to support their work. The moon and the seasons belong to everyone; other peoples' traditions belong to them.</p>
+    `,
+    actions: actionButton("view-today", "Return to the Wheel", true)
+  });
 }
 
 function renderToday() {
@@ -831,6 +847,9 @@ el("nextMoon").addEventListener("click", () => moveSelection(1));
 el("returnToday").addEventListener("click", returnToToday);
 el("moonCore").addEventListener("click", returnToToday);
 el("dotStar").addEventListener("click", () => selectKey("DOT"));
+document.querySelectorAll(".open-about").forEach(button => {
+  button.addEventListener("click", () => setView("about"));
+});
 el("openCalendar").addEventListener("click", () => setView("calendar"));
 el("openJournal").addEventListener("click", () => setView("journal"));
 el("brandHome").addEventListener("click", event => {
